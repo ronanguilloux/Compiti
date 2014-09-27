@@ -1,0 +1,8 @@
+{
+  "name": "Compiti",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ]
+}
