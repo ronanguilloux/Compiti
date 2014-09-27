@@ -61,8 +61,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/operation/:operationId',
       views: {
         'tab-operations': {
-          templateUrl: 'templates/operation-detail.html',
-          controller: 'OperationDetailCtrl'
+            templateUrl: function($stateParams){
+                return  'templates/operations/' + $stateParams.operationId + '.html';
+            },
+           controller: 'OperationDetailCtrl'
         }
       }
     })

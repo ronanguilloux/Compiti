@@ -1,9 +1,13 @@
 <ion-view title="Opérations">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="operation in operations" type="item-text-wrap" href="#/tab/operation/{{operation.id}}">
-        {{operation.name}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-button-right"
+                ng-repeat="operation in operations" type="item-text-wrap" href="#/tab/operation/{{operation.id}}">
+                {{operation.name}}
+                <button class="button button-positive">
+                    <i class="icon ion-ios7-telephone"></i>
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>

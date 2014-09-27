@@ -1,0 +1,25 @@
+<!--
+  This template loads for the 'tab.operation-detail' state (app.js)
+  'operation' is a $scope variable created in the operationsCtrl controller (controllers.js)
+  The operationsCtrl pulls data from the operations service (service.js)
+  The operations service returns an array of operation data
+-->
+<ion-view title="{{ operation.details.name }}">
+    <ion-content has-header="true" padding="true">
+        <div class="list">
+            <div class="item item-divider">
+                {{ operation.details.name }}
+            </div>
+            <label class="item">
+                {{ operation.elem0 }}&nbsp;+&nbsp;{{ operation.elem1 }}
+            </label>
+            <div class="item item-divider">
+                =
+            </div>
+            <label class="item item-input">
+               <input type="text" placeholder="Résultat ?">
+            </label>
+            valid: {{ operation.result }}
+        </div>
+  </ion-content>
+</ion-view>
