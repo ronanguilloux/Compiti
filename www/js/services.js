@@ -18,6 +18,15 @@ angular.module('starter.services', [])
             case '0':
                 return elem0 + elem1;
                 break;
+            case '1':
+                return elem0 * elem1;
+                break;
+            case '2':
+                return elem0 - elem1;
+                break;
+            case '3':
+                return elem0 / elem1;
+                break;
         }
     }
 
