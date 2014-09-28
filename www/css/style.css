@@ -1,1 +1,20 @@
 /* Empty. Add your own CSS if you like */
+
+input.invalid {
+    border-color:hsl(0, 50%, 50%);
+    background:hsl(0, 50%, 90%);
+}
+
+input.valid {
+    background:hsl(120, 50%, 90%);
+    border-color:hsl(120, 50%, 50%);
+}
+
+.element {
+    padding-left:2em;
+}
+
+.operator {
+    padding-left:1.1em;
+}
+

@@ -5,7 +5,7 @@
                 ng-repeat="operation in operations" type="item-text-wrap" href="#/tab/operation/{{operation.id}}">
                 {{operation.name}}
                 <button class="button button-positive">
-                    <i class="icon ion-ios7-telephone"></i>
+                    <i class="icon {{ operation.icon }}"></i>
                 </button>
             </ion-item>
         </ion-list>
