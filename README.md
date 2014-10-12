@@ -17,7 +17,27 @@ $ ionic build ios
 $ ionic emulate ios
 ```
 
-## Licences
+## Known issues
+
+### `no such file or directory '/plugins/ios.json' ionic`
+
+Solution:
+
+```bash
+$ cordova plugin add org.apache.cordova.device
+```
+
+### `Cordova needs ios-sim version 1.7 or greater, you have version .`
+
+Solution:
+
+```bash
+$ sudo brew uninstall ios-sim
+$ sudo npm install ios-sim -g
+```
+
+
+## Licence
 
 - Source code: MIT License
 - Ionic Framework: MIT License
