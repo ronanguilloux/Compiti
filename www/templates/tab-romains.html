@@ -1,0 +1,13 @@
+<ion-view title="Chiffres Romains">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-button-right"
+                      ng-repeat="romain in romains" type="item-text-wrap" href="#/tab/romain/{{romain.id}}">
+                {{romain.name}}
+                <button class="button button-positive">
+                    <i class="icon {{ romain.icon }}"></i>
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
