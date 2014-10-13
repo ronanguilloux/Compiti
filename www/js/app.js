@@ -77,6 +77,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('tab.romain-lire', {
+      url: '/romain/lire',
+      views: {
+          'tab-romains': {
+              templateUrl: 'templates/tab-romain-lire.html',
+              controller: 'RomainLireCtrl'
+          }
+      }
+    })
+
+    .state('tab.romain-ecrire', {
+      url: '/romain/ecrire',
+      views: {
+          'tab-romains': {
+              templateUrl: 'templates/tab-romain-ecrire.html',
+              controller: 'RomainEcrireCtrl'
+          }
+      }
+    })
+
     .state('tab.romain-detail', {
       url: '/romain/:romainId',
       views: {
@@ -85,7 +105,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               controller: 'RomainDetailCtrl'
           }
       }
-  })
+    })
+
+
   ;
 
 

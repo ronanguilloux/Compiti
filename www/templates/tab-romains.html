@@ -2,6 +2,20 @@
     <ion-content>
         <ion-list>
             <ion-item class="item item-button-right"
+                      type="item-text-wrap" href="#/tab/romain/lire">
+                Lire
+                <button class="button button-positive">
+                    <i class="icon {{ romain.icon }}"></i>
+                </button>
+            </ion-item>
+            <ion-item class="item item-button-right"
+                type="item-text-wrap" href="#/tab/romain/ecrire">
+                Écrire
+                <button class="button button-positive">
+                    <i class="icon {{ romain.icon }}"></i>
+                </button>
+            </ion-item>
+            <ion-item class="item item-button-right"
                       ng-repeat="romain in romains" type="item-text-wrap" href="#/tab/romain/{{romain.id}}">
                 {{romain.name}}
                 <button class="button button-positive">

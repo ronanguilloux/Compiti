@@ -34,10 +34,34 @@ angular.module('starter.services', [])
                     break;
             }
         };
+        var ecrire =    function() {
+            switch(id) {
+                case '0':
+                    return elem0 + elem1;
+                    break;
+                case '1':
+                    return elem0 - elem1;
+                    break;
+            }
+        };
 
         return {
             all: function() {
                 return operations;
+            },
+            lire: function() {
+                return {
+                    'details':  { name: 'Lire' },
+                    'elem':     toRoman(elem0),
+                    'result':   elem0
+                };
+            },
+            ecrire: function() {
+                return {
+                    'details':  { name: 'Écrire' },
+                    'elem':     elem0,
+                    'result':   toRoman(elem0)
+                };
             },
             get: function(operationId) {
                 return {

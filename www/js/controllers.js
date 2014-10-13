@@ -30,6 +30,46 @@ angular.module('starter.controllers', [])
         $scope.romains = Romains.all();
     })
 
+    .controller('RomainLireCtrl', function($scope, $stateParams, Romains) {
+        $scope.romain = Romains.lire();
+        $scope.buttonText = 'Vérifier';
+        $scope.verify = function(answer) {
+            console.log(answer, $scope);
+            if((typeof $scope.romain.result != 'undefined')
+                &&
+                (typeof answer != 'undefined')) {
+                if($scope.romain.result == answer.result){
+                    $scope.buttonText = 'OK !';
+                } else {
+                    $scope.buttonText = "Incorrect, recommencez svp";
+                }
+            } else {
+                $scope.buttonText = "Veuillez saisir un résultat svp";
+            }
+            console.log($scope.submitter)
+        }
+    })
+
+    .controller('RomainEcrireCtrl', function($scope, $stateParams, Romains) {
+        $scope.romain = Romains.ecrire();
+        $scope.buttonText = 'Vérifier';
+        $scope.verify = function(answer) {
+            console.log(answer, $scope);
+            if((typeof $scope.romain.result != 'undefined')
+                &&
+                (typeof answer != 'undefined')) {
+                if($scope.romain.result == answer.result){
+                    $scope.buttonText = 'OK !';
+                } else {
+                    $scope.buttonText = "Incorrect, recommencez svp";
+                }
+            } else {
+                $scope.buttonText = "Veuillez saisir un résultat svp";
+            }
+            console.log($scope.submitter)
+        }
+    })
+
     .controller('RomainDetailCtrl', function($scope, $stateParams, Romains) {
         $scope.romain = Romains.get($stateParams.romainId);
         $scope.buttonText = 'Vérifier';
