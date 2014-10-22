@@ -15,33 +15,32 @@ angular.module('starter.services', [])
             }
             return r;
         };
-        var operations = [
-            { id: 0, name: 'Addition', icon: 'ion-ios7-plus-empty', operator: '+'},
-            { id: 1, name: 'Soustraction', icon:'ion-ios7-minus-empty', operator: '-' },
-        ];
-
-        var min =      0,
-            max =      50;
-        var elem0 =    Math.floor(Math.random() * (max - min)) + min,
-            elem1 =    Math.floor(Math.random() * (max - min)) + min;
-        var result =    function(id) {
-            switch(id) {
-                case '0':
-                    return elem0 + elem1;
-                    break;
-                case '1':
-                    return elem0 - elem1;
-                    break;
-            }
+        var count = 10;
+        var min= 0;
+        var max = 50;
+        var getElem = function() {
+            return Math.floor(Math.random() * (max - min)) + min;
         };
-        var ecrire =    function() {
-            switch(id) {
-                case '0':
-                    return elem0 + elem1;
+        var operations = [
+            {
+                id: 0, name: 'Addition', icon: 'ion-ios7-plus-empty', operator: '+',
+                elem0: getElem(), elem1: getElem()
+            },
+            {
+                id: 1, name: 'Soustraction', icon: 'ion-ios7-minus-empty', operator: '-',
+                elem0: getElem(), elem1: getElem()
+            }
+        ];
+        var getResult = function(operation) {
+            switch(operation.id) {
+                case 0:
+                    return operation.elem0 + operation.elem1;
                     break;
-                case '1':
-                    return elem0 - elem1;
+                case 1:
+                    return operation.elem0 - operation.elem1;
                     break;
+                default:
+                    throw "operations unknown";
             }
         };
 
@@ -50,31 +49,33 @@ angular.module('starter.services', [])
                 return operations;
             },
             lire: function() {
+                var elem = getElem();
+                console.log('elem', elem);
                 return {
-                    'details':  { name: 'Lire' },
-                    'elem':     toRoman(elem0),
-                    'result':   elem0
+                    title:  'Lire',
+                    value:  elem,
+                    elem:   toRoman(elem),
+                    result: elem
                 };
             },
             ecrire: function() {
+                var elem = getElem();
                 return {
-                    'details':  { name: 'Écrire' },
-                    'elem':     elem0,
-                    'result':   toRoman(elem0)
+                    title:  'Écrire',
+                    elem:   elem,
+                    result: toRoman(elem)
                 };
             },
             get: function(operationId) {
+                var operation = operations[operationId],
+                    result = getResult(operation);
                 return {
-                    'details':  operations[operationId],
+                    'operation':  operation,
                     'arabics' : {
-                        'elem0':    elem0,
-                        'elem1':    elem1,
-                        'result':   result(operationId)
+                        'result': result
                     },
                     'romans' : {
-                        'elem0':    toRoman(elem0),
-                        'elem1':    toRoman(elem1),
-                        'result':   toRoman(result(operationId))
+                        'result':   toRoman(result)
                     }
                 };
             }
@@ -108,6 +109,8 @@ angular.module('starter.services', [])
                 case '3':
                     return elem0 / elem1;
                     break;
+                default:
+                    throw "operation unknown"
             }
         }
 
@@ -117,10 +120,8 @@ angular.module('starter.services', [])
             },
             get: function(operationId) {
                 return {
-                    'details':  operations[operationId],
-                    'elem0':    elem0,
-                    'elem1':    elem1,
-                    'result':   result(operationId)
+                    details:  operations[operationId],
+                    result:   result(this.details)
                 };
             }
         }

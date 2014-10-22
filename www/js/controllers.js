@@ -22,7 +22,6 @@ angular.module('starter.controllers', [])
             } else {
                 $scope.buttonText = "Veuillez saisir un résultat svp";
             }
-            console.log($scope.submitter)
         }
     })
 
@@ -34,7 +33,6 @@ angular.module('starter.controllers', [])
         $scope.romain = Romains.lire();
         $scope.buttonText = 'Vérifier';
         $scope.verify = function(answer) {
-            console.log(answer, $scope);
             if((typeof $scope.romain.result != 'undefined')
                 &&
                 (typeof answer != 'undefined')) {
@@ -46,7 +44,6 @@ angular.module('starter.controllers', [])
             } else {
                 $scope.buttonText = "Veuillez saisir un résultat svp";
             }
-            console.log($scope.submitter)
         }
     })
 
@@ -54,7 +51,6 @@ angular.module('starter.controllers', [])
         $scope.romain = Romains.ecrire();
         $scope.buttonText = 'Vérifier';
         $scope.verify = function(answer) {
-            console.log(answer, $scope);
             if((typeof $scope.romain.result != 'undefined')
                 &&
                 (typeof answer != 'undefined')) {
@@ -66,7 +62,6 @@ angular.module('starter.controllers', [])
             } else {
                 $scope.buttonText = "Veuillez saisir un résultat svp";
             }
-            console.log($scope.submitter)
         }
     })
 
@@ -74,7 +69,6 @@ angular.module('starter.controllers', [])
         $scope.romain = Romains.get($stateParams.romainId);
         $scope.buttonText = 'Vérifier';
         $scope.verify = function(answer) {
-            console.log(answer, $scope);
             if((typeof $scope.romain.romans.result != 'undefined')
                 &&
                 (typeof answer != 'undefined')) {
@@ -86,6 +80,5 @@ angular.module('starter.controllers', [])
             } else {
                 $scope.buttonText = "Veuillez saisir un résultat svp";
             }
-            console.log($scope.submitter)
         }
     });
