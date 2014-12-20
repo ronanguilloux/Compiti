@@ -6,18 +6,33 @@
 -->
 <ion-view title="{{ romain.details.name }}">
     <ion-content has-header="true" padding="true">
-        <form ng-submit="verify(answer)">
-            <div class="list">
-                <div class="item item-divider">
-                    {{ romain.title }}
-                </div>
-                <label class="item">
-                    <span class="element">{{ romain.elem }}</span>
-                </label>
-                <div class="item">
-                    <input autofocus class="result" ng-model="answer.result" type="text" placeholder="Résultat ? " data-result="{{ romain.result }}">
-                    <br><button type="submit" class="button button-block button-positive">{{ buttonText }}</button>
+        <form name="form">
+            <h3>{{ romain.title }} ({{ results }} / {{ total }})</h3>
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        <h1 ng-class="state.title.class">{{ state.title.text }}</h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-33 col-offset-33">
+                    <div class="item item-input-inset">
+                        <label class="item-input-wrapper">
+                            <input ng-change="verify(state.input.value)"
+                                   autofocus class="result" ng-model="state.input.value" type="text"
+                                   placeholder="?" data-result="{{ romain.result }}">
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col-33 col-offset-10" ng-show="state.btn.show">
+                        <button ng-class="state.btn.class"
+                                ng-click="reset()"
+                            class="button button-light button-outline button-balanced icon-right">{{ state.btn.text }}</button>
+                </div>
+            </div>
+            <!--
+            <pre>Scope = {{state | json}}</pre>
+            -->
+        </form>
     </ion-content>
 </ion-view>

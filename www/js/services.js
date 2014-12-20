@@ -50,9 +50,8 @@ angular.module('starter.services', [])
             },
             lire: function() {
                 var elem = getElem();
-                console.log('elem', elem);
                 return {
-                    title:  'Lire',
+                    title:  'Lire en chiffres romains',
                     value:  elem,
                     elem:   toRoman(elem),
                     result: elem
@@ -61,7 +60,7 @@ angular.module('starter.services', [])
             ecrire: function() {
                 var elem = getElem();
                 return {
-                    title:  'Écrire',
+                    title:  'Écrire en chiffres romains',
                     elem:   elem,
                     result: toRoman(elem)
                 };

@@ -30,21 +30,61 @@ angular.module('starter.controllers', [])
     })
 
     .controller('RomainLireCtrl', function($scope, $stateParams, Romains) {
-        $scope.romain = Romains.lire();
-        $scope.buttonText = 'Vérifier';
-        $scope.verify = function(answer) {
+
+        $scope.results = 0;
+        $scope.total = 10;
+        $scope.reset = function(){
+            if($scope.results === $scope.total) {
+                return false;
+            }
+            $scope.answer='';
+            $scope.romain = Romains.lire();
+            $scope.defaultState = {
+                title: {
+                    text: $scope.romain.elem,
+                    class: 'positive'
+                },
+                input: {
+                    value: ''
+                },
+                btn: {
+                    show: false,
+                    class: '',
+                    text: ''
+                }
+            };
+            $scope.state = angular.copy($scope.defaultState);
+        };
+        $scope.verify = function(userResponse) {
+            $scope.answer = userResponse;
             if((typeof $scope.romain.result != 'undefined')
                 &&
-                (typeof answer != 'undefined')) {
-                if($scope.romain.result == answer.result){
-                    $scope.buttonText = 'OK !';
-                } else {
-                    $scope.buttonText = "Incorrect, recommencez svp";
+                (typeof $scope.answer != 'undefined')) {
+                if($scope.romain.result == $scope.answer){
+                    $scope.results++;
+                    $scope.state = {
+                        title: {
+                            text: $scope.romain.elem,
+                            class: 'balanced'
+
+                        },
+                        input: {
+                            value: $scope.answer
+                        },
+                        btn: {
+                            show: true,
+                            class: 'ion-checkmark-circled',
+                            text: 'OK!'
+                        }
+                    };
+                    if($scope.results === $scope.total) {
+                        $scope.state.btn.text = 'BRAVO!';
+                        $scope.state.btn.class = 'ion-star';
+                    }
                 }
-            } else {
-                $scope.buttonText = "Veuillez saisir un résultat svp";
             }
         }
+        $scope.reset();
     })
 
     .controller('RomainEcrireCtrl', function($scope, $stateParams, Romains) {
