@@ -33,6 +33,7 @@ angular.module('starter.controllers', [])
 
         $scope.results = 0;
         $scope.total = 10;
+
         $scope.reset = function(){
             if($scope.results === $scope.total) {
                 return false;
@@ -44,6 +45,9 @@ angular.module('starter.controllers', [])
                     text: $scope.romain.elem,
                     class: 'positive'
                 },
+                challenge: {
+                    show: true
+                },
                 input: {
                     value: ''
                 },
@@ -51,36 +55,36 @@ angular.module('starter.controllers', [])
                     show: false,
                     class: '',
                     text: ''
+                },
+                endMessage: {
+                    show: false,
+                    class: 'ion-star',
+                    text: 'BRAVO!'
                 }
             };
             $scope.state = angular.copy($scope.defaultState);
         };
+        $scope.next = function() {
+            $scope.results++;
+            if($scope.total === $scope.results) {
+                $scope.state.endMessage.show = true;
+                $scope.state.challenge.show = false;
+                $scope.state.endMessage.show = true;
+            }
+            $scope.reset();
+        }
         $scope.verify = function(userResponse) {
             $scope.answer = userResponse;
-            if((typeof $scope.romain.result != 'undefined')
+            if ((typeof $scope.romain.result != 'undefined')
                 &&
                 (typeof $scope.answer != 'undefined')) {
-                if($scope.romain.result == $scope.answer){
-                    $scope.results++;
-                    $scope.state = {
-                        title: {
-                            text: $scope.romain.elem,
-                            class: 'balanced'
-
-                        },
-                        input: {
-                            value: $scope.answer
-                        },
-                        btn: {
-                            show: true,
-                            class: 'ion-checkmark-circled',
-                            text: 'OK!'
-                        }
-                    };
-                    if($scope.results === $scope.total) {
-                        $scope.state.btn.text = 'BRAVO!';
-                        $scope.state.btn.class = 'ion-star';
-                    }
+                if ($scope.romain.result == $scope.answer) {
+                    $scope.state.title.text = $scope.romain.elem;
+                    $scope.state.title.class = 'balanced';
+                    $scope.state.input.value = $scope.answer;
+                    $scope.state.btn.show = true;
+                    $scope.state.btn.class = 'ion-checkmark-circled';
+                    $scope.state.btn.text = 'OK!';
                 }
             }
         }

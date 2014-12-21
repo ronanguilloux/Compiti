@@ -13,7 +13,7 @@
                         <h1 ng-class="state.title.class">{{ state.title.text }}</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" ng-show="state.challenge.show">
                 <div class="col-33 col-offset-33">
                     <div class="item item-input-inset">
                         <label class="item-input-wrapper">
@@ -26,8 +26,15 @@
                 </div>
                 <div class="col-33 col-offset-10" ng-show="state.btn.show">
                         <button ng-class="state.btn.class"
-                                ng-click="reset()"
+                                ng-click="next()"
                             class="button button-light button-outline button-balanced icon-right">{{ state.btn.text }}</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-33 col-offset-33" ng-show="state.endMessage.show">
+                    <a ng-class="state.endMessage.class"
+                       href="#/tab/romains"
+                       class="button button-light button-outline button-balanced icon-right">{{ state.endMessage.text }}</a>
                 </div>
             </div>
             <!--
